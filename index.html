@@ -8,39 +8,61 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Great+Vibes&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Dancing+Script:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Great+Vibes&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Dancing+Script:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&family=Cinzel:wght@400;600&display=swap"
     rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 
 <body>
 
-  <!-- ─── CURTAIN REVEAL ─── -->
-  <div class="curtain l" id="cL"></div>
-  <div class="curtain r" id="cR"></div>
-  <div class="curtain-logo" id="cLogo">Happy Birthday Priya <span class="f-rose"></span></div>
+  <!-- ══ ENHANCED LOADING SCREEN ══ -->
+  <!-- Left curtain panel -->
+  <div class="curtain l" id="cL">
+    <div class="curtain-aurora-blob clab-a"></div>
+    <div class="curtain-aurora-blob clab-b"></div>
+  </div>
+  <!-- Right curtain panel -->
+  <div class="curtain r" id="cR">
+    <div class="curtain-aurora-blob clab-c"></div>
+    <div class="curtain-aurora-blob clab-d"></div>
+  </div>
+  <!-- Decorative spinning ring -->
+  <svg class="load-ring-svg" id="loadRing" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%"   stop-color="#ff9ebd" stop-opacity="0.95"/>
+        <stop offset="48%"  stop-color="#cca3ff" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#8af2ff" stop-opacity="0.95"/>
+      </linearGradient>
+    </defs>
+    <circle class="load-ring-track" cx="130" cy="130" r="118"/>
+    <circle class="load-ring-inner" cx="130" cy="130" r="104"/>
+    <circle class="load-ring-fill"  cx="130" cy="130" r="118"/>
+  </svg>
+  <!-- Centered text card -->
+  <div class="load-overlay" id="cLogo">
+    <span class="load-ornament">✦</span>
+    <p class="load-eyebrow">a birthday surprise</p>
+    <p class="load-main-text">Happy&nbsp;Birthday</p>
+    <p class="load-script-name">Priya</p>
+    <p class="load-sub-text">@priyaisamood &nbsp;·&nbsp; <span class="load-heart">♥</span> &nbsp; 2025</p>
+    <div class="load-dots"><span></span><span></span><span></span></div>
+  </div>
 
-  <!-- ─── PARTICLES ─── -->
   <canvas id="particles"></canvas>
 
-  <!-- ─── CURSOR ─── -->
   <div class="cur-glow" id="curGlow"></div>
   <div class="cur" id="cur"></div>
   <div class="cur-r" id="curR"></div>
-
-  <!-- ─── PROGRESS ─── -->
   <div class="prog" id="prog"></div>
-
-  <!-- ─── CANVAS ─── -->
   <canvas id="confetti"></canvas>
 
-  <!-- ═══════════════════════════════════════
-     HERO
-═══════════════════════════════════════ -->
+  <!-- HERO -->
   <section class="hero">
-
-    <!-- LEFT: TEXT -->
+    <canvas id="heroCanvas"></canvas>
+    <div class="aurora aurora-a"></div>
+    <div class="aurora aurora-b"></div>
     <div class="hero-text">
       <div class="huge-text">
         <span>HAPPY</span>
@@ -48,17 +70,14 @@
         <span class="huge-priya">Priya</span>
       </div>
     </div>
-
-    <!-- RIGHT: PHOTO -->
     <div class="hero-visual">
       <img src="priya/img (11).jpeg" alt="Priya">
       <div class="hero-badge">Happy Birthday ✨</div>
     </div>
-
     <div class="scroll-hint" id="scrollHint">scroll &nbsp;↓</div>
   </section>
 
-  <!-- ─── TICKER 1 ─── -->
+  <!-- TICKER 1 -->
   <div class="ticker">
     <div class="ticker-track">
       <span>HAPPY BIRTHDAY PRIYA &nbsp;✦&nbsp; @priyaisamood &nbsp;✦&nbsp; SHE IS A MOOD &nbsp;✦&nbsp; I'M FAMOUS, WORLD
@@ -68,14 +87,10 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════
-     MUSIC VISUALIZER
-═══════════════════════════════════════ -->
+  <!-- VISUALIZER -->
   <div class="visualizer-section reveal" id="visualizer"></div>
 
-  <!-- ═══════════════════════════════════════
-     ORB DIVIDER
-═══════════════════════════════════════ -->
+  <!-- ORB DIVIDER -->
   <div class="orb-divider">
     <div class="orb-line"></div>
     <div class="orb"></div>
@@ -84,24 +99,19 @@
     <div class="orb-line"></div>
   </div>
 
-  <!-- ═══════════════════════════════════════
-     3D CAROUSEL GALLERY
-═══════════════════════════════════════ -->
+  <!-- 3D CAROUSEL -->
   <section class="gallery-section">
     <div class="g-header reveal">
       <h2 class="g-title">her world, in pictures</h2>
       <span class="g-sub">✦ &nbsp; click or auto spin</span>
     </div>
-
     <div class="carousel-container" id="carousel">
       <div class="carousel-item"><img src="priya/img (14).jpeg" alt="">
         <div class="m-cap">golden hour ☀️</div>
       </div>
-
-      <div class="carousel-item"><img src="priya/img_1_heic_converted.jpeg" alt="">
-        <div class="m-cap">a beautiful moment ✨</div>
+      <div class="carousel-item"><img src="priya/img (8).jpeg" alt="">
+        <div class="m-cap">effortless cool 🖤</div>
       </div>
-
       <div class="carousel-item"><img src="priya/img (2).jpeg" alt="">
         <div class="m-cap">the silk era 🖤</div>
       </div>
@@ -112,7 +122,7 @@
         <div class="m-cap">sequin season ✨</div>
       </div>
       <div class="carousel-item"><img src="priya/img (5).jpeg" alt="">
-        <div class="m-cap">mountains & mood 🏔️</div>
+        <div class="m-cap">mountains &amp; mood 🏔️</div>
       </div>
       <div class="carousel-item"><img src="priya/img (6).jpeg" alt="">
         <div class="m-cap">red is her colour</div>
@@ -121,13 +131,13 @@
         <div class="m-cap">genuinely laughing 🌞</div>
       </div>
       <div class="carousel-item"><img src="priya/img (1).jpeg" alt="">
-        <div class="m-cap">roses & views 🌹</div>
+        <div class="m-cap">roses &amp; views 🌹</div>
       </div>
       <div class="carousel-item"><img src="priya/img (9).jpeg" alt="">
         <div class="m-cap">mirror knows best</div>
       </div>
       <div class="carousel-item"><img src="priya/img (10).jpeg" alt="">
-        <div class="m-cap">floral & feeling it</div>
+        <div class="m-cap">floral &amp; feeling it</div>
       </div>
       <div class="carousel-item"><img src="priya/img (11).jpeg" alt="">
         <div class="m-cap">just existing 🌙</div>
@@ -136,100 +146,79 @@
         <div class="m-cap">brown is a whole vibe</div>
       </div>
       <div class="carousel-item"><img src="priya/img (13).jpeg" alt="">
-        <div class="m-cap">candid & iconic</div>
+        <div class="m-cap">candid &amp; iconic</div>
       </div>
       <div class="carousel-item"><img src="priya/img (1).PNG" alt="">
         <div class="m-cap">a beautiful moment ✨</div>
       </div>
-
       <div class="carousel-item"><img src="priya/img (15).jpeg" alt="">
-        <div class="m-cap">a beautiful moment ✨</div>
+        <div class="m-cap">golden vibes ✨</div>
       </div>
       <div class="carousel-item"><img src="priya/img (16).jpeg" alt="">
-        <div class="m-cap">a beautiful moment ✨</div>
+        <div class="m-cap">main character energy</div>
       </div>
       <div class="carousel-item"><img src="priya/img (2).PNG" alt="">
-        <div class="m-cap">a beautiful moment ✨</div>
+        <div class="m-cap">blessed frame ✨</div>
       </div>
       <div class="carousel-item"><img src="priya/img (3).PNG" alt="">
-        <div class="m-cap">a beautiful moment ✨</div>
+        <div class="m-cap">portrait mode 📸</div>
       </div>
       <div class="carousel-item"><img src="priya/img (4).PNG" alt="">
-        <div class="m-cap">a beautiful moment ✨</div>
+        <div class="m-cap">glow era</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (8).jpeg" alt="">
-        <div class="m-cap">a beautiful moment ✨</div>
+      <div class="carousel-item"><img src="priya/img (16).jpeg" alt="">
+        <div class="m-cap">iconic as always ✨</div>
       </div>
     </div>
-
     <div class="carousel-nav">
       <button id="cPrev">←</button>
       <button id="cNext">→</button>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════
-   FILM STRIP
-═══════════════════════════════════════ -->
+  <!-- FILM STRIP -->
   <section class="film-strip-wrapper">
     <div class="film-track">
-      <!-- Set 1 -->
-      <div class="film-frame">
-        <img src="priya/img (4).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (4).jpeg" alt="">
         <div class="film-msg">Stunning ✨</div>
       </div>
-      <div class="film-frame">
-        <img src="priya/img (6).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (6).jpeg" alt="">
         <div class="film-msg">Iconic 🔥</div>
       </div>
-      <div class="film-frame">
-        <img src="priya/img (2).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (2).jpeg" alt="">
         <div class="film-msg">Vibes 🖤</div>
       </div>
-      <div class="film-frame">
-        <img src="priya/img (13).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (13).jpeg" alt="">
         <div class="film-msg">Radiant 🌸</div>
       </div>
-      <div class="film-frame">
-        <img src="priya/img (12).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (12).jpeg" alt="">
         <div class="film-msg">Flawless 🤎</div>
       </div>
-      <div class="film-frame">
-        <img src="priya/img (1).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (1).jpeg" alt="">
         <div class="film-msg">Gorgeous 🌹</div>
       </div>
-
-      <!-- Set 2 (Duplicate for seamless loop) -->
-      <div class="film-frame">
-        <img src="priya/img (4).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (4).jpeg" alt="">
         <div class="film-msg">Stunning ✨</div>
       </div>
-      <div class="film-frame">
-        <img src="priya/img (6).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (6).jpeg" alt="">
         <div class="film-msg">Iconic 🔥</div>
       </div>
-      <div class="film-frame">
-        <img src="priya/img (2).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (2).jpeg" alt="">
         <div class="film-msg">Vibes 🖤</div>
       </div>
-      <div class="film-frame">
-        <img src="priya/img (13).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (13).jpeg" alt="">
         <div class="film-msg">Radiant 🌸</div>
       </div>
-      <div class="film-frame">
-        <img src="priya/img (12).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (12).jpeg" alt="">
         <div class="film-msg">Flawless 🤎</div>
       </div>
-      <div class="film-frame">
-        <img src="priya/img (1).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (1).jpeg" alt="">
         <div class="film-msg">Gorgeous 🌹</div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════
-     ORB DIVIDER
-═══════════════════════════════════════ -->
+  <!-- ORB DIVIDER -->
   <div class="orb-divider">
     <div class="orb-line"></div>
     <div class="orb"></div>
@@ -239,171 +228,113 @@
   </div>
 
   <!-- ═══════════════════════════════════════
-     BIRTHDAY CAKE — DARK LUXE
-═══════════════════════════════════════ -->
-  <section class="cake-section" id="cakeSection">
-    <div class="cake-wrapper reveal-scale">
-      <div class="cake-container" id="cakeContainer">
-        <!-- Plate -->
-        <div class="cake-plate"></div>
+       CANDLES / CAKE SECTION
+  ═══════════════════════════════════════ -->
+  <section id="candles">
+    <div class="sec-header">
+      <p class="eyebrow reveal">Make A Wish</p>
+      <h2 class="sec-title reveal">Blow Out the Candles</h2>
+      <div class="sec-rule"></div>
+    </div>
 
-        <!-- Candles -->
-        <div class="candles">
-          <div class="candle">
-            <div class="flame" id="f1"></div>
-            <div class="smoke"></div>
-          </div>
-          <div class="candle">
-            <div class="flame" id="f2"></div>
-            <div class="smoke"></div>
-          </div>
-          <div class="candle">
-            <div class="flame" id="f3"></div>
-            <div class="smoke"></div>
-          </div>
-          <div class="candle">
-            <div class="flame" id="f4"></div>
-            <div class="smoke"></div>
-          </div>
-          <div class="candle">
-            <div class="flame" id="f5"></div>
-            <div class="smoke"></div>
-          </div>
-        </div>
+    <div class="cake-outer reveal" id="cakeOuter">
 
-        <!-- Top Tier: "Priya" -->
-        <div class="cake-tier cake-tier-top">
-          <span class="tier-text">Priya</span>
-        </div>
+      <!-- ✦ Crown ✦ -->
+      <div class="cake-crown">👑</div>
 
-        <!-- Middle Tier: Heart + ornaments + pearls -->
-        <div class="cake-tier cake-tier-mid">
-          <span class="tier-heart">♥</span>
-          <div class="tier-ornament tl">
-            <div class="diamond"></div>
-          </div>
-          <div class="tier-ornament tr">
-            <div class="diamond"></div>
-          </div>
-          <div class="tier-ornament bl">
-            <div class="diamond"></div>
-          </div>
-          <div class="tier-ornament br">
-            <div class="diamond"></div>
-          </div>
-          <div class="tier-pearls"></div>
+      <!-- 5 Candles -->
+      <div class="candle-row">
+        <div class="c-unit">
+          <div class="c-flame" id="flame-0"></div>
+          <div class="c-wick"></div>
+          <div class="c-drip"></div>
+          <div class="c-body"></div>
         </div>
-
-        <!-- Bottom Tier: "Happy Birthday" + ornaments + pearls -->
-        <div class="cake-tier cake-tier-bottom">
-          <span class="tier-text">Happy Birthday</span>
-          <div class="tier-ornament tl">
-            <div class="diamond"></div>
-          </div>
-          <div class="tier-ornament tr">
-            <div class="diamond"></div>
-          </div>
-          <div class="tier-ornament bl">
-            <div class="diamond"></div>
-          </div>
-          <div class="tier-ornament br">
-            <div class="diamond"></div>
-          </div>
-          <div class="tier-pearls"></div>
+        <div class="c-unit">
+          <div class="c-flame" id="flame-1"></div>
+          <div class="c-wick"></div>
+          <div class="c-drip"></div>
+          <div class="c-body"></div>
         </div>
-
-        <!-- CSS Roses -->
-        <div class="cake-rose r1">
-          <div class="rose-bloom">
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-          </div>
-          <div class="rose-leaf left"></div>
-          <div class="rose-leaf right"></div>
+        <div class="c-unit">
+          <div class="c-flame" id="flame-2"></div>
+          <div class="c-wick"></div>
+          <div class="c-drip"></div>
+          <div class="c-body"></div>
         </div>
-        <div class="cake-rose r2">
-          <div class="rose-bloom">
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-          </div>
-          <div class="rose-leaf left"></div>
+        <div class="c-unit">
+          <div class="c-flame" id="flame-3"></div>
+          <div class="c-wick"></div>
+          <div class="c-drip"></div>
+          <div class="c-body"></div>
         </div>
-        <div class="cake-rose r3">
-          <div class="rose-bloom">
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-          </div>
-          <div class="rose-leaf right"></div>
+        <div class="c-unit">
+          <div class="c-flame" id="flame-4"></div>
+          <div class="c-wick"></div>
+          <div class="c-drip"></div>
+          <div class="c-body"></div>
         </div>
-        <div class="cake-rose r4">
-          <div class="rose-bloom">
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-          </div>
-          <div class="rose-leaf left"></div>
-          <div class="rose-leaf right"></div>
-        </div>
-        <div class="cake-rose r5">
-          <div class="rose-bloom">
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-          </div>
-          <div class="rose-leaf right"></div>
-        </div>
-        <div class="cake-rose r6">
-          <div class="rose-bloom">
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-            <div class="petal-layer"></div>
-          </div>
-          <div class="rose-leaf left"></div>
-        </div>
-
-        <!-- Scattered petals -->
-        <div class="cake-petal"></div>
-        <div class="cake-petal"></div>
-        <div class="cake-petal"></div>
-        <div class="cake-petal"></div>
-        <div class="cake-petal"></div>
-        <div class="cake-petal"></div>
-
-        <!-- Glow ring (appears on blow) -->
-        <div class="cake-glow-ring" id="cakeGlow"></div>
       </div>
 
-      <p class="cake-wish-text">Make a Wish</p>
-      <p class="cake-msg" id="cakeMsg"><span class="arrow">❮❮</span> Click to Blow Out Candles <span
-          class="arrow">❯❯</span></p>
-    </div>
+      <!-- Tier 1 — Top (smallest) -->
+      <div class="tier tier-1">
+        <div class="tier-glitter"></div>
+        <div class="tier-text">
+          <span class="tier-diamonds">◆</span>
+          <span class="tier-label-small">Make&nbsp;a&nbsp;Wish</span>
+          <span class="tier-diamonds">◆</span>
+        </div>
+      </div>
+
+      <!-- Gold separator -->
+      <div class="tier-gold-sep" style="width:225px;"></div>
+
+      <!-- Tier 2 — Middle -->
+      <div class="tier tier-2">
+        <div class="tier-glitter"></div>
+        <div class="tier-text">
+          <span class="tier-diamonds" style="font-size:0.9rem;">◆</span>
+          <span class="tier-name-script">Priya</span>
+          <span class="tier-diamonds" style="font-size:0.9rem;">◆</span>
+        </div>
+      </div>
+
+      <!-- Gold separator -->
+      <div class="tier-gold-sep" style="width:275px;"></div>
+
+      <!-- Tier 3 — Base (widest) -->
+      <div class="tier tier-3">
+        <div class="tier-glitter"></div>
+        <div class="tier-text">
+          <span class="tier-hbd-text">Happy Birthday</span>
+        </div>
+      </div>
+
+      <!-- Gold plate -->
+      <div class="cake-plate"></div>
+
+    </div><!-- .cake-outer -->
+
+    <button class="btn-blow" id="blowBtn" onclick="blowOut()">
+      <span>◆ Click to Blow Out Candles ◆</span>
+    </button>
+    <p class="wish-reveal" id="wishText">
+      🎉 Wish made! May all your dreams come true, Priya ✨
+    </p>
   </section>
 
-  <!-- ═══════════════════════════════════════
-     LETTER / MESSAGE
-═══════════════════════════════════════ -->
+  <!-- LETTER -->
   <section class="letter-section">
     <div class="letter-card reveal">
       <p class="letter-eyebrow">✦ &nbsp; a note for the birthday girl &nbsp; ✦</p>
       <span class="letter-script">Dear Priya,</span>
-
       <p class="letter-body" id="letterBody"></p>
-
       <div class="letter-rule"></div>
       <span class="letter-sig">— with love, always 💛</span>
     </div>
   </section>
 
-  <!-- ─── TICKER 2 (dark) ─── -->
+  <!-- TICKER 2 -->
   <div class="ticker-dark ticker">
     <div class="ticker-track">
       <span>HAPPY BIRTHDAY &nbsp;·&nbsp; @priyaisamood &nbsp;·&nbsp; CERTIFIED MOOD &nbsp;·&nbsp; 221K AND COUNTING
@@ -413,21 +344,17 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════
-     HAPPY BIRTHDAY ANIMATION
-═══════════════════════════════════════ -->
+  <!-- HBD ANIMATION -->
   <div class="hbd-section">
     <div class="hbd-text">
-      <div class="word">
-        <span>H</span><span>a</span><span>p</span><span>p</span><span>y</span>
-      </div>
+      <div class="word"><span>H</span><span>a</span><span>p</span><span>p</span><span>y</span></div>
       <div class="word">
         <span>B</span><span>i</span><span>r</span><span>t</span><span>h</span><span>d</span><span>a</span><span>y</span>
       </div>
     </div>
   </div>
 
-  <!-- ─── FOOTER ─── -->
+  <!-- FOOTER -->
   <footer>
     <p class="f-left">Priya, is a mood.</p>
     <div class="f-right">
@@ -436,9 +363,6 @@
     </div>
   </footer>
 
-  <!-- ═══════════════════════════════════════
-     JAVASCRIPT
-═══════════════════════════════════════ -->
 
   <script src="script.js"></script>
 </body>
