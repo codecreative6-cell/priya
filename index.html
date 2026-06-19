@@ -4,6 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070410">
+  <meta name="color-scheme" content="dark">
+  <!-- Failsafe: guarantees the loading screen is always dismissed, even if a
+       resource is slow/missing, JS errors out, or scripts are blocked. -->
+  <noscript><style>#loadScreen{display:none!important}</style></noscript>
+  <script>
+    (function () {
+      function dismissLoader() {
+        var s = document.getElementById('loadScreen');
+        if (s && !s.classList.contains('hide')) {
+          s.classList.add('hide');
+          setTimeout(function () { if (s && s.parentNode) s.parentNode.removeChild(s); }, 1000);
+        }
+      }
+      window.addEventListener('load', function () { setTimeout(dismissLoader, 4500); });
+      setTimeout(dismissLoader, 10000); // absolute upper bound, independent of script.js
+    })();
+  </script>
   <title>Happy Birthday Priya ✨</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,38 +34,161 @@
 
 <body>
 
-  <!-- ══ ENHANCED LOADING SCREEN ══ -->
-  <!-- Left curtain panel -->
-  <div class="curtain l" id="cL">
-    <div class="curtain-aurora-blob clab-a"></div>
-    <div class="curtain-aurora-blob clab-b"></div>
-  </div>
-  <!-- Right curtain panel -->
-  <div class="curtain r" id="cR">
-    <div class="curtain-aurora-blob clab-c"></div>
-    <div class="curtain-aurora-blob clab-d"></div>
-  </div>
-  <!-- Decorative spinning ring -->
-  <svg class="load-ring-svg" id="loadRing" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%"   stop-color="#ff9ebd" stop-opacity="0.95"/>
-        <stop offset="48%"  stop-color="#cca3ff" stop-opacity="1"/>
-        <stop offset="100%" stop-color="#8af2ff" stop-opacity="0.95"/>
-      </linearGradient>
-    </defs>
-    <circle class="load-ring-track" cx="130" cy="130" r="118"/>
-    <circle class="load-ring-inner" cx="130" cy="130" r="104"/>
-    <circle class="load-ring-fill"  cx="130" cy="130" r="118"/>
-  </svg>
-  <!-- Centered text card -->
-  <div class="load-overlay" id="cLogo">
-    <span class="load-ornament">✦</span>
-    <p class="load-eyebrow">a birthday surprise</p>
-    <p class="load-main-text">Happy&nbsp;Birthday</p>
-    <p class="load-script-name">Priya</p>
-    <p class="load-sub-text">@priyaisamood &nbsp;·&nbsp; <span class="load-heart">♥</span> &nbsp; 2025</p>
-    <div class="load-dots"><span></span><span></span><span></span></div>
+  <!-- ══ FLORAL ROMANTIC LOADING SCREEN ══ -->
+  <div class="load-screen" id="loadScreen">
+
+    <!-- Atmospheric glow orbs -->
+    <div class="load-glow load-glow-a"></div>
+    <div class="load-glow load-glow-b"></div>
+    <div class="load-glow load-glow-c"></div>
+
+    <!-- Falling rose petals -->
+    <div class="load-petals">
+      <span class="petal"></span><span class="petal"></span>
+      <span class="petal"></span><span class="petal"></span>
+      <span class="petal"></span><span class="petal"></span>
+      <span class="petal"></span><span class="petal"></span>
+      <span class="petal"></span><span class="petal"></span>
+      <span class="petal"></span><span class="petal"></span>
+    </div>
+
+    <!-- Floral wreath SVG -->
+    <div class="load-wreath-wrap">
+      <svg class="floral-wreath" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="rg1" cx="38%" cy="32%" r="68%">
+            <stop offset="0%"   stop-color="#ffe4ef"/><stop offset="100%" stop-color="#e8729a"/>
+          </radialGradient>
+          <radialGradient id="rg1i" cx="38%" cy="32%" r="68%">
+            <stop offset="0%"   stop-color="#ffc8dc"/><stop offset="100%" stop-color="#d85888"/>
+          </radialGradient>
+          <radialGradient id="rg2" cx="38%" cy="32%" r="68%">
+            <stop offset="0%"   stop-color="#f4d8ff"/><stop offset="100%" stop-color="#c070e8"/>
+          </radialGradient>
+          <radialGradient id="rg2i" cx="38%" cy="32%" r="68%">
+            <stop offset="0%"   stop-color="#e4b8ff"/><stop offset="100%" stop-color="#a850d0"/>
+          </radialGradient>
+          <radialGradient id="rgb" cx="38%" cy="32%" r="68%">
+            <stop offset="0%"   stop-color="#ffd0e4"/><stop offset="100%" stop-color="#e05080"/>
+          </radialGradient>
+          <linearGradient id="lgl" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%"   stop-color="#5a9850"/><stop offset="100%" stop-color="#386832"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Dotted base circle -->
+        <circle cx="180" cy="180" r="138" fill="none" stroke="rgba(180,130,100,0.15)" stroke-width="0.6" stroke-dasharray="2 5"/>
+
+        <!-- 8 leaves at 22.5° increments -->
+        <ellipse cx="233" cy="53"  rx="3" ry="8.5" fill="url(#lgl)" opacity="0.75" transform="rotate(22.5,  233,  53)"/>
+        <ellipse cx="307" cy="127" rx="3" ry="8.5" fill="url(#lgl)" opacity="0.75" transform="rotate(67.5,  307, 127)"/>
+        <ellipse cx="307" cy="233" rx="3" ry="8.5" fill="url(#lgl)" opacity="0.75" transform="rotate(112.5, 307, 233)"/>
+        <ellipse cx="233" cy="307" rx="3" ry="8.5" fill="url(#lgl)" opacity="0.75" transform="rotate(157.5, 233, 307)"/>
+        <ellipse cx="127" cy="307" rx="3" ry="8.5" fill="url(#lgl)" opacity="0.75" transform="rotate(202.5, 127, 307)"/>
+        <ellipse cx="53"  cy="233" rx="3" ry="8.5" fill="url(#lgl)" opacity="0.75" transform="rotate(247.5,  53, 233)"/>
+        <ellipse cx="53"  cy="127" rx="3" ry="8.5" fill="url(#lgl)" opacity="0.75" transform="rotate(292.5,  53, 127)"/>
+        <ellipse cx="127" cy="53"  rx="3" ry="8.5" fill="url(#lgl)" opacity="0.75" transform="rotate(337.5, 127,  53)"/>
+
+        <!-- 4 buds at 45° positions -->
+        <g transform="translate(278, 82) rotate(45)">
+          <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="url(#rgb)" opacity="0.9"/>
+          <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="url(#rgb)" opacity="0.9" transform="rotate(120)"/>
+          <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="url(#rgb)" opacity="0.9" transform="rotate(240)"/>
+          <circle  cx="0" cy="0"   r="2.2" fill="#c84470"/>
+          <ellipse cx="0" cy="7"   rx="2"  ry="5"   fill="url(#lgl)" opacity="0.8"/>
+        </g>
+        <g transform="translate(278, 278) rotate(135)">
+          <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="url(#rgb)" opacity="0.9"/>
+          <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="url(#rgb)" opacity="0.9" transform="rotate(120)"/>
+          <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="url(#rgb)" opacity="0.9" transform="rotate(240)"/>
+          <circle  cx="0" cy="0"   r="2.2" fill="#c84470"/>
+          <ellipse cx="0" cy="7"   rx="2"  ry="5"   fill="url(#lgl)" opacity="0.8"/>
+        </g>
+        <g transform="translate(82, 278) rotate(225)">
+          <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="url(#rgb)" opacity="0.9"/>
+          <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="url(#rgb)" opacity="0.9" transform="rotate(120)"/>
+          <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="url(#rgb)" opacity="0.9" transform="rotate(240)"/>
+          <circle  cx="0" cy="0"   r="2.2" fill="#c84470"/>
+          <ellipse cx="0" cy="7"   rx="2"  ry="5"   fill="url(#lgl)" opacity="0.8"/>
+        </g>
+        <g transform="translate(82, 82) rotate(315)">
+          <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="url(#rgb)" opacity="0.9"/>
+          <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="url(#rgb)" opacity="0.9" transform="rotate(120)"/>
+          <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="url(#rgb)" opacity="0.9" transform="rotate(240)"/>
+          <circle  cx="0" cy="0"   r="2.2" fill="#c84470"/>
+          <ellipse cx="0" cy="7"   rx="2"  ry="5"   fill="url(#lgl)" opacity="0.8"/>
+        </g>
+
+        <!-- 4 main roses — blush at top/bottom, violet at left/right -->
+        <g transform="translate(180, 42)">
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg1)"/>
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg1)" transform="rotate(72)"/>
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg1)" transform="rotate(144)"/>
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg1)" transform="rotate(216)"/>
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg1)" transform="rotate(288)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg1i)" transform="rotate(36)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg1i)" transform="rotate(108)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg1i)" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg1i)" transform="rotate(252)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg1i)" transform="rotate(324)"/>
+          <circle cx="0" cy="0" r="4"   fill="#e06090"/>
+          <circle cx="0" cy="0" r="2.2" fill="#c84070"/>
+        </g>
+        <g transform="translate(318, 180)">
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg2)"/>
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg2)" transform="rotate(72)"/>
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg2)" transform="rotate(144)"/>
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg2)" transform="rotate(216)"/>
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg2)" transform="rotate(288)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg2i)" transform="rotate(36)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg2i)" transform="rotate(108)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg2i)" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg2i)" transform="rotate(252)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg2i)" transform="rotate(324)"/>
+          <circle cx="0" cy="0" r="4"   fill="#c070e0"/>
+          <circle cx="0" cy="0" r="2.2" fill="#a050c8"/>
+        </g>
+        <g transform="translate(180, 318)">
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg1)"/>
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg1)" transform="rotate(72)"/>
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg1)" transform="rotate(144)"/>
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg1)" transform="rotate(216)"/>
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg1)" transform="rotate(288)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg1i)" transform="rotate(36)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg1i)" transform="rotate(108)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg1i)" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg1i)" transform="rotate(252)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg1i)" transform="rotate(324)"/>
+          <circle cx="0" cy="0" r="4"   fill="#e06090"/>
+          <circle cx="0" cy="0" r="2.2" fill="#c84070"/>
+        </g>
+        <g transform="translate(42, 180)">
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg2)"/>
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg2)" transform="rotate(72)"/>
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg2)" transform="rotate(144)"/>
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg2)" transform="rotate(216)"/>
+          <ellipse cx="0" cy="-11" rx="7.5" ry="13" fill="url(#rg2)" transform="rotate(288)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg2i)" transform="rotate(36)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg2i)" transform="rotate(108)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg2i)" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg2i)" transform="rotate(252)"/>
+          <ellipse cx="0" cy="-7"  rx="5"   ry="8"  fill="url(#rg2i)" transform="rotate(324)"/>
+          <circle cx="0" cy="0" r="4"   fill="#c070e0"/>
+          <circle cx="0" cy="0" r="2.2" fill="#a050c8"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Centred text -->
+    <div class="load-text-center">
+      <div class="load-ornament-row">✿ ━ ✿ ━ ✿</div>
+      <p class="load-date">June · 2025</p>
+      <p class="load-hb">Happy&nbsp;Birthday</p>
+      <p class="load-name">Priya</p>
+      <p class="load-love">with love &nbsp;<span class="load-heart-inline">♡</span></p>
+      <div class="load-dots"><span></span><span></span><span></span></div>
+    </div>
+
   </div>
 
   <canvas id="particles"></canvas>
@@ -71,7 +212,7 @@
       </div>
     </div>
     <div class="hero-visual">
-      <img src="priya/img (11).jpeg" alt="Priya">
+      <img src="priya/img (11).jpeg" alt="Priya" loading="eager" decoding="async" fetchpriority="high">
       <div class="hero-badge">Happy Birthday ✨</div>
     </div>
     <div class="scroll-hint" id="scrollHint">scroll &nbsp;↓</div>
@@ -106,67 +247,67 @@
       <span class="g-sub">✦ &nbsp; click or auto spin</span>
     </div>
     <div class="carousel-container" id="carousel">
-      <div class="carousel-item"><img src="priya/img (14).jpeg" alt="">
+      <div class="carousel-item"><img src="priya/img (14).jpeg" alt="" loading="lazy" decoding="async">
         <div class="m-cap">golden hour ☀️</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (8).jpeg" alt="">
+      <div class="carousel-item"><img src="priya/img (8).jpeg" alt="" loading="lazy" decoding="async">
         <div class="m-cap">effortless cool 🖤</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (2).jpeg" alt="">
+      <div class="carousel-item"><img src="priya/img (2).jpeg" alt="" loading="lazy" decoding="async">
         <div class="m-cap">the silk era 🖤</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (3).jpeg" alt="">
+      <div class="carousel-item"><img src="priya/img (3).jpeg" alt="" loading="lazy" decoding="async">
         <div class="m-cap">car selfie aesthetic</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (4).jpeg" alt="">
+      <div class="carousel-item"><img src="priya/img (4).jpeg" alt="" loading="lazy" decoding="async">
         <div class="m-cap">sequin season ✨</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (5).jpeg" alt="">
+      <div class="carousel-item"><img src="priya/img (5).jpeg" alt="" loading="lazy" decoding="async">
         <div class="m-cap">mountains &amp; mood 🏔️</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (6).jpeg" alt="">
+      <div class="carousel-item"><img src="priya/img (6).jpeg" alt="" loading="lazy" decoding="async">
         <div class="m-cap">red is her colour</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (7).jpeg" alt="">
+      <div class="carousel-item"><img src="priya/img (7).jpeg" alt="" loading="lazy" decoding="async">
         <div class="m-cap">genuinely laughing 🌞</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (1).jpeg" alt="">
+      <div class="carousel-item"><img src="priya/img (1).jpeg" alt="" loading="lazy" decoding="async">
         <div class="m-cap">roses &amp; views 🌹</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (9).jpeg" alt="">
+      <div class="carousel-item"><img src="priya/img (9).jpeg" alt="" loading="lazy" decoding="async">
         <div class="m-cap">mirror knows best</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (10).jpeg" alt="">
+      <div class="carousel-item"><img src="priya/img (10).jpeg" alt="" loading="lazy" decoding="async">
         <div class="m-cap">floral &amp; feeling it</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (11).jpeg" alt="">
+      <div class="carousel-item"><img src="priya/img (11).jpeg" alt="" loading="lazy" decoding="async">
         <div class="m-cap">just existing 🌙</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (12).jpeg" alt="">
+      <div class="carousel-item"><img src="priya/img (12).jpeg" alt="" loading="lazy" decoding="async">
         <div class="m-cap">brown is a whole vibe</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (13).jpeg" alt="">
+      <div class="carousel-item"><img src="priya/img (13).jpeg" alt="" loading="lazy" decoding="async">
         <div class="m-cap">candid &amp; iconic</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (1).PNG" alt="">
+      <div class="carousel-item"><img src="priya/img (1).PNG" alt="" loading="lazy" decoding="async">
         <div class="m-cap">a beautiful moment ✨</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (15).jpeg" alt="">
+      <div class="carousel-item"><img src="priya/img (15).jpeg" alt="" loading="lazy" decoding="async">
         <div class="m-cap">golden vibes ✨</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (16).jpeg" alt="">
+      <div class="carousel-item"><img src="priya/img (16).jpeg" alt="" loading="lazy" decoding="async">
         <div class="m-cap">main character energy</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (2).PNG" alt="">
+      <div class="carousel-item"><img src="priya/img (2).PNG" alt="" loading="lazy" decoding="async">
         <div class="m-cap">blessed frame ✨</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (3).PNG" alt="">
+      <div class="carousel-item"><img src="priya/img (3).PNG" alt="" loading="lazy" decoding="async">
         <div class="m-cap">portrait mode 📸</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (4).PNG" alt="">
+      <div class="carousel-item"><img src="priya/img (4).PNG" alt="" loading="lazy" decoding="async">
         <div class="m-cap">glow era</div>
       </div>
-      <div class="carousel-item"><img src="priya/img (16).jpeg" alt="">
+      <div class="carousel-item"><img src="priya/img (16).jpeg" alt="" loading="lazy" decoding="async">
         <div class="m-cap">iconic as always ✨</div>
       </div>
     </div>
@@ -179,40 +320,40 @@
   <!-- FILM STRIP -->
   <section class="film-strip-wrapper">
     <div class="film-track">
-      <div class="film-frame"><img src="priya/img (4).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (4).jpeg" alt="" loading="lazy" decoding="async">
         <div class="film-msg">Stunning ✨</div>
       </div>
-      <div class="film-frame"><img src="priya/img (6).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (6).jpeg" alt="" loading="lazy" decoding="async">
         <div class="film-msg">Iconic 🔥</div>
       </div>
-      <div class="film-frame"><img src="priya/img (2).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (2).jpeg" alt="" loading="lazy" decoding="async">
         <div class="film-msg">Vibes 🖤</div>
       </div>
-      <div class="film-frame"><img src="priya/img (13).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (13).jpeg" alt="" loading="lazy" decoding="async">
         <div class="film-msg">Radiant 🌸</div>
       </div>
-      <div class="film-frame"><img src="priya/img (12).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (12).jpeg" alt="" loading="lazy" decoding="async">
         <div class="film-msg">Flawless 🤎</div>
       </div>
-      <div class="film-frame"><img src="priya/img (1).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (1).jpeg" alt="" loading="lazy" decoding="async">
         <div class="film-msg">Gorgeous 🌹</div>
       </div>
-      <div class="film-frame"><img src="priya/img (4).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (4).jpeg" alt="" loading="lazy" decoding="async">
         <div class="film-msg">Stunning ✨</div>
       </div>
-      <div class="film-frame"><img src="priya/img (6).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (6).jpeg" alt="" loading="lazy" decoding="async">
         <div class="film-msg">Iconic 🔥</div>
       </div>
-      <div class="film-frame"><img src="priya/img (2).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (2).jpeg" alt="" loading="lazy" decoding="async">
         <div class="film-msg">Vibes 🖤</div>
       </div>
-      <div class="film-frame"><img src="priya/img (13).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (13).jpeg" alt="" loading="lazy" decoding="async">
         <div class="film-msg">Radiant 🌸</div>
       </div>
-      <div class="film-frame"><img src="priya/img (12).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (12).jpeg" alt="" loading="lazy" decoding="async">
         <div class="film-msg">Flawless 🤎</div>
       </div>
-      <div class="film-frame"><img src="priya/img (1).jpeg" alt="">
+      <div class="film-frame"><img src="priya/img (1).jpeg" alt="" loading="lazy" decoding="async">
         <div class="film-msg">Gorgeous 🌹</div>
       </div>
     </div>
